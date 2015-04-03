@@ -1,0 +1,12 @@
+Package: ATACseeker
+Type: Package
+Title: Utilities for ATACseq QC, differential accessibility, and integration
+Version: 0.6
+Date: 2014-10-23
+Author: Tim Triche, Jr.
+Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
+Description: See ?atacPairedEnd, ?tssQcPlot, ?fragmentLengths, ?getComplexity
+Depends: Homo.sapiens, Mus.musculus, rtracklayer, S4Vectors, SRAdb, Repitools
+Imports: Rsamtools, GenomicRanges, GenomicAlignments, preseqR, csaw, mclust
+Suggests: GenometriCorr, DMRcate, Rcade, derFinder, nucleR, seqplots
+License: Artistic

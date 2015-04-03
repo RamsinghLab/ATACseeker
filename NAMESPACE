@@ -1,0 +1,12 @@
+
+import(preseqR)
+import(rtracklayer)
+import(Rsamtools)
+import(GenomicRanges)
+import(GenomicAlignments)
+import(Repitools)
+import(preseqR)
+import(csaw)
+
+exportPattern("^[[:alpha:]]+")
+
