@@ -1,27 +1,34 @@
-## e.g.
-##
-## data(cytobands_hg19)
-## del7q <- byBand(cytobands_hg19)$chr7q22.1
-## galp <- atacPairedEnd('chr7.q10.CD49f_r1.hg19.bam', which=del7q)
-##
-## ...or...
-##
-## library(Mus.musculus)
-## SMO <- transcriptsBy(Mus.musculus, 'gene')[['319757']]
-## galp <- atacPairedEnd('A1.SMO.bam', which=SMO)
-##
-## ...or...
-##
-## library(Mus.musculus)
-## chr6 <- GRanges('chr6', IRanges(1, seqlengths(Mus.musculus)['chr6']), '*')
-## galp <- atacPairedEnd("A2.mm10.unique.bam",
-##                       bamParams=properPairedEndAtacFilters(which=chr6))
-##
-atacPairedEnd <- function(bam, genome=c('hg19','mm10'), bamParams=NULL, which=NULL, ...) {
+#' pull in (filter and assemble as an object) some or all of the "useful" reads
+#' in a paired-end ATACseq run (i.e., the majority of ATACseq studies)
+#'
+#' @param bam       character string, the BAM file to parse
+#' @param genome    optional character string, the genome assembly to target
+#' @param bamParams optional any parameters to pass through to ScanBamParam
+#' @param which     optional a GRanges object with specific regions to extract
+#'
+#' @return  a GenomicAlignmentPairs object
+#'
+#' @examples
+#' \dontrun{
+#'
+#' data(cytobands_hg19)
+#' del7q <- byBand(cytobands_hg19)$chr7q22.1
+#' galp <- atacPairedEnd('chr7.q10.CD49f_r1.hg19.bam', which=del7q)
+#'
+#' library(Mus.musculus)
+#' SMO <- transcriptsBy(Mus.musculus, 'gene')[['319757']]
+#' galp <- atacPairedEnd('A1.SMO.bam', which=SMO)
+#'
+#' library(Mus.musculus)
+#' chr6 <- GRanges('chr6', IRanges(1, seqlengths(Mus.musculus)['chr6']), '*')
+#' galp <- atacPairedEnd("A2.mm10.unique.bam",
+#'                       bamParams=properPairedEndAtacFilters(which=chr6))
+#' }
+atacPairedEnd <- function(bam, genome=c("hg19","mm10"), bamParams=NULL, which=NULL, ...) {
 
   getStdChromGRanges <- function(x) {
     ## ONLY works if chromosomes are properly ordered as in OrganismDbi
-    as(seqinfo(x), 'GRanges')[ 1:(which(seqlevels(x) == 'chrM') - 1) ] 
+    as(seqinfo(x), "GRanges")[ 1:(which(seqlevels(x) == "chrM") - 1) ] 
   }
 
   if(is.null(bamParams)) {
@@ -41,7 +48,7 @@ atacPairedEnd <- function(bam, genome=c('hg19','mm10'), bamParams=NULL, which=NU
 ## not exported; used for preseq estimation
 properPairedEndAtacFilters <- function(which, ...) {
 
-  ScanBamParam(what=c('rname','strand','pos','isize','mapq'),
+  ScanBamParam(what=c("rname","strand","pos","isize","mapq"),
                flag=scanBamFlag(isProperPair=TRUE,
                                 isNotPassingQualityControls=FALSE), 
                which=which, ...)
@@ -50,7 +57,7 @@ properPairedEndAtacFilters <- function(which, ...) {
 ## not exported; used for BAM filtering, also needs which(!chrM) filter (duh?)
 uniquePairedEndAtacFilters <- function(which, ...) {
 
-  ScanBamParam(what=c('rname','strand','pos','isize','mapq'),
+  ScanBamParam(what=c("rname","strand","pos","isize","mapq"),
                flag=scanBamFlag(isProperPair=TRUE,
                                 isDuplicate=FALSE,
                                 isNotPrimaryRead=FALSE,
@@ -62,7 +69,7 @@ uniquePairedEndAtacFilters <- function(which, ...) {
 spikeInFilters <- function(...) {
 
   ## grab the unmapped sequences for brute-force alignment to phiX spike-ins
-  ScanBamParam(what=c('seq'), 
+  ScanBamParam(what=c("seq"), 
                flag=scanBamFlag(isUnmappedQuery=TRUE, 
                                 isNotPassingQualityControls=FALSE, 
                                 ...))
