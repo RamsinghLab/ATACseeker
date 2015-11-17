@@ -6,6 +6,16 @@ Date: 2015-11-17
 Author: Tim Triche, Jr., Asif Zubair
 Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
 Description: See ?atacPairedEnd, ?tssQcPlot, ?fragmentLengths, ?getComplexity
-Depends: Homo.sapiens, rtracklayer, csaw, preseqR, LOLA
-Imports: Rsamtools, GenomicRanges, GenomicAlignments, mclust
+Depends:
+    Homo.sapiens,
+    rtracklayer,
+    csaw,
+    preseqR,
+    LOLA
+Imports:
+    Rsamtools,
+    GenomicRanges,
+    GenomicAlignments,
+    mclust
 License: Artistic
+RoxygenNote: 5.0.1
