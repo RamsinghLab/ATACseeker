@@ -2,17 +2,30 @@
 % Please edit documentation in R/plotComplexity.R
 \name{plotComplexity}
 \alias{plotComplexity}
-\title{plot results from preseq (complexity estimation around features)}
+\title{plot results from preseq (complexity estimation around features)
+TODO: use the ... to allow for comparison of multiple libraries}
 \usage{
-plotComplexity(x, ..., withCI = FALSE)
+plotComplexity(x, ..., ests = NULL, withCI = FALSE, add = FALSE)
 }
 \arguments{
 \item{x}{the thing whose complexity is to be plotted}
+
+\item{...}{other parameters to pass on to getEsts()}
+
+\item{ests}{precomputed complexity estimates (speeds up multiple runs)}
+
+\item{withCI}{plot confidence intervals for the estimates?  (FALSE)}
+
+\item{add}{add to an existing plot? (FALSE)}
 }
 \value{
-invisibly, the complexity estimates corresponding to the generated plot
+invisibly, the complexity estimates corresponding to the plot
 }
 \description{
-FIXME: use the ... to allow for comparison of multiple libraries
+plot results from preseq (complexity estimation around features)
+TODO: use the ... to allow for comparison of multiple libraries
+}
+\seealso{
+preseqR
 }
 
