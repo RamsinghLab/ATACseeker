@@ -9,13 +9,15 @@ Description: See ?fragPlot, ?tssQcPlot, ?qcPlot, ?getComplexity
 Depends:
     Homo.sapiens,
     rtracklayer,
-    csaw,
     preseqR,
+    csaw,
     LOLA
 Imports:
     Rsamtools,
     GenomicRanges,
     GenomicAlignments,
     mclust
+Suggests:
+    Mus.musculus
 License: Artistic
 RoxygenNote: 5.0.1
