@@ -23,4 +23,3 @@ minusStrand <- function(x) x[which(strand(x) == '-')]
 
 grow <- function(x, y) resize(x, width(x) + (y*2))
 shrink <- function(x, y) resize(x, pmax(1, width(x) - (y*2)))
-

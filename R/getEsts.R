@@ -20,4 +20,4 @@ getEsts <- function(xx, withCI=FALSE, ...) {
     names(res) <- c("reads","frags","frags.lower","frags.upper")
   }
   return(res)
-} 
+}
