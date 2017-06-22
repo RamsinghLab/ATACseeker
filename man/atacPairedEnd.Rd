@@ -41,4 +41,3 @@ galp <- atacPairedEnd("A2.mm10.unique.bam",
                       bamParams=properPairedEndAtacFilters(which=chr6))
 }
 }
-

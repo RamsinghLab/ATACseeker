@@ -15,4 +15,3 @@ a matrix of estimates
 \description{
 complexity estimates from a GAlignmentPairs object, formatted for preseqR
 }
-

@@ -17,4 +17,3 @@ the output of csaw::profileSites after massaging inputs
 \description{
 collect various cross-correlation and window size stats for QC
 }
-

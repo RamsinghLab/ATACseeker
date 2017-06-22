@@ -17,4 +17,3 @@ Plot fragment size density for a set of samples.
 \seealso{
 fragmentLengths
 }
-

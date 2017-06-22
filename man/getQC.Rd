@@ -17,4 +17,3 @@ a list with components "qc" (metrics) and "frag.dist" (density)
 \description{
 obtain QC information used by csaw from paired-end BAM files
 }
-

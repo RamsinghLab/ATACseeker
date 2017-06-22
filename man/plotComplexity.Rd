@@ -28,4 +28,3 @@ TODO: use the ... to allow for comparison of multiple libraries
 \seealso{
 preseqR
 }
-

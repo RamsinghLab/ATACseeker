@@ -3,7 +3,5 @@ import(rtracklayer)
 import(Rsamtools)
 import(GenomicRanges)
 import(GenomicAlignments)
-import(preseqR)
-import(csaw)
 
 exportPattern("^[[:alpha:]]+")

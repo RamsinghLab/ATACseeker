@@ -15,4 +15,3 @@ an array of feature frequencies
 \description{
 for getComplexity and preseqR
 }
-
