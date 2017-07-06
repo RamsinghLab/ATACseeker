@@ -1,8 +1,8 @@
 Package: ATACseeker
 Type: Package
 Title: Utilities for ATACseq QC, differential accessibility, and integration
-Version: 0.9.3
-Date: 2017-06-06
+Version: 0.9.4
+Date: 2017-07-05
 Author: Tim Triche, Jr., Asif Zubair
 Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
 Description: See ?fragPlot, ?tssQcPlot, ?qcPlot, ?getComplexity
@@ -17,6 +17,8 @@ Imports:
     GenomicAlignments,
     mclust
 Suggests:
-    Mus.musculus
+    Mus.musculus,
+    VariantTools,
+    gmapR
 License: Artistic
 RoxygenNote: 6.0.1
