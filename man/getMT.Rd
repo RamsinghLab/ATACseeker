@@ -4,7 +4,7 @@
 \alias{getMT}
 \title{grab the mitochondrial reads from a BAM and estimate their fraction
 nb. this could probably be done faster for a list of BAMs but it's not
-nb. nb. returns NuMt-depleted mitochondrial GenomicAlignmentPairs}
+nb. nb. returns NuMt-depleted mitochondrial GenomicAlignments}
 \usage{
 getMT(bam, chrM = "chrM", flags = NULL)
 }
@@ -18,5 +18,5 @@ getMT(bam, chrM = "chrM", flags = NULL)
 \description{
 grab the mitochondrial reads from a BAM and estimate their fraction
 nb. this could probably be done faster for a list of BAMs but it's not
-nb. nb. returns NuMt-depleted mitochondrial GenomicAlignmentPairs
+nb. nb. returns NuMt-depleted mitochondrial GenomicAlignments
 }

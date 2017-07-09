@@ -1,8 +1,8 @@
 Package: ATACseeker
 Type: Package
 Title: Utilities for ATACseq QC, differential accessibility, and integration
-Version: 0.9.4
-Date: 2017-07-05
+Version: 0.9.5
+Date: 2017-07-09
 Author: Tim Triche, Jr., Asif Zubair
 Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
 Description: See ?fragPlot, ?tssQcPlot, ?qcPlot, ?getComplexity

@@ -1,15 +1,13 @@
 #' grab the mitochondrial reads from a BAM and estimate their fraction
 #' nb. this could probably be done faster for a list of BAMs but it's not
-#' nb. nb. returns NuMt-depleted mitochondrial GenomicAlignmentPairs 
+#' nb. nb. returns NuMt-depleted mitochondrial GenomicAlignments
 #'
 #' @param bam     a BAM filename, which should have an index (else index it)
 #' @param chrM    what the mitochondrial contig is called. Default is "chrM" 
 #' @param flags   (optional) scanBamFlag output for ScanBamParam construction
 #'
 #' @import GenomicAlignments
-#' @import VariantTools
 #' @import Rsamtools
-#' @import gmapR
 #'
 #' @export
 getMT <- function(bam, chrM="chrM", flags=NULL) {
