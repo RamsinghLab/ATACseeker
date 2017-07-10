@@ -46,7 +46,7 @@ callMT <- function(mtReads, p.lower=0.1, p.error=0.001, read.count=2L, ...) {
   sampleNames(res) <- gsub(paste0(".", mtGenome), "", 
                            gsub("\\.bam", "", 
                                 basename(bamPaths(attr(mtReads, "mtView")))))
-  res$PASS <- apply(softFilterMatrix(mtVar), 1, all) == 1
+  res$PASS <- apply(softFilterMatrix(res), 1, all) == 1
   res <- res[rev(order(res$PASS, totalDepth(res)))]
   res$VAF <- altDepth(res) / totalDepth(res)
   return(res)
