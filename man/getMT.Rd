@@ -6,14 +6,16 @@
 nb. this could probably be done faster for a list of BAMs but it's not
 nb. nb. returns NuMt-depleted mitochondrial GenomicAlignments}
 \usage{
-getMT(bam, chrM = "chrM", flags = NULL)
+getMT(bam, chrM = "chrM", mtGenome = "hg19", plotMAPQ = FALSE)
 }
 \arguments{
 \item{bam}{a BAM filename, which should have an index (else index it)}
 
 \item{chrM}{what the mitochondrial contig is called. Default is "chrM"}
 
-\item{flags}{(optional) scanBamFlag output for ScanBamParam construction}
+\item{mtGenome}{what mitochondrial assembly was used (default is hg19)}
+
+\item{plotMAPQ}{plot distribution of mitochondrial mapping quality? (FALSE)}
 }
 \description{
 grab the mitochondrial reads from a BAM and estimate their fraction
