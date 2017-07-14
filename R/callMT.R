@@ -1,3 +1,5 @@
+#' call mitochondrial variants from the results of ATACseeker::getMT() 
+#'
 #' call mitochondrial variants against the reference sequence they aligned to
 #' the appropriate cutoffs will depend on the estimated copy number of mtDNA
 #' in the cell type assayed; leukocytes usually have between 100-500, while
