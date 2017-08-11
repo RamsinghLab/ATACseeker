@@ -58,7 +58,8 @@ plotMT <- function(mtCalls, filterVAF=TRUE, rot=-1, title=NULL) {
   bdries$gene <- mtRegions$name
   bdries$angle <- with(bdries, (90 + (360*bp/mtSeqLen)) %% 360)
 
-  mtNonCoding <- subset(gaps(mtGenes), strand=="*")
+  gap <- gaps(mtGenes)
+  mtNonCoding <- subset(gap, decode(strand(gap)) == "*")
   mtNonCoding$name <- "Non-Coding"
   mtAll <- sort(c(mtGenes, mtNonCoding))
 
