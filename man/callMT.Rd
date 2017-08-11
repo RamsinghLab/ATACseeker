@@ -7,7 +7,7 @@
 callMT(mtReads, p.lower = 0.1, p.error = 0.001, read.count = 2L, ...)
 }
 \arguments{
-\item{mtReads}{mitochondrial reads, with bamViews, from getMT()}
+\item{mtReads}{mitochondrial reads, with bamViews, or a BAM filename}
 
 \item{p.lower}{lower bound on binomial probability for a variant (0.1)}
 

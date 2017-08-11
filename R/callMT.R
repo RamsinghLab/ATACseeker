@@ -6,7 +6,7 @@
 #' hepatocytes can have thousands. Therefore different settings make sense
 #' for different cell types. The defaults call a mutation with ~ 2% VAF.
 #'
-#' @param mtReads     mitochondrial reads, with bamViews, from getMT()
+#' @param mtReads     mitochondrial reads, with bamViews, or a BAM filename
 #' @param p.lower     lower bound on binomial probability for a variant (0.1)
 #' @param p.error     error probability (influences the minimum VAF; 0.001)
 #' @param read.count  minimum read depth required to support a variant (2)
@@ -20,6 +20,8 @@
 #'
 #' @export
 callMT <- function(mtReads, p.lower=0.1, p.error=0.001, read.count=2L, ...) { 
+  
+  if (is(mtReads, "character")) mtReads <- getMT(mtReads)
   mtGenome <- unique(genome(mtReads))
   mtChr <- unique(names(genome(mtReads)))
   if (length(mtGenome)>1 | length(mtChr)>1 | is.null(attr(mtReads,"mtView"))) {
