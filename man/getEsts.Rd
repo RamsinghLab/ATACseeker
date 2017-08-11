@@ -2,16 +2,14 @@
 % Please edit documentation in R/getEsts.R
 \name{getEsts}
 \alias{getEsts}
-\title{Estimate the complexity of a library or sample based on unique fragments
-using Daley & Smith's implementation of Good & Toulmin's rational function
-approximation to solve the missing species problem.}
+\title{Complexity estimation for ATACseq libraries.}
 \usage{
 getEsts(xx, withCI = FALSE, ...)
 }
 \arguments{
 \item{xx}{The fragments or sample of fragments}
 
-\item{withCI}{Have preseq compute 95% confidence intervals for plotting?}
+\item{withCI}{Have preseq compute 95 percent confidence intervals for plots?}
 
 \item{...}{Other arguments to pass on to preseq}
 }
@@ -20,6 +18,6 @@ A data frame with results
 }
 \description{
 Estimate the complexity of a library or sample based on unique fragments
-using Daley & Smith's implementation of Good & Toulmin's rational function
+using Daley and Smith's implementation of Good-Toulmin rational function
 approximation to solve the missing species problem.
 }

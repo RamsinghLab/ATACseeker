@@ -1,9 +1,11 @@
+#' Complexity estimation for ATACseq libraries.
+#'
 #' Estimate the complexity of a library or sample based on unique fragments
-#' using Daley & Smith's implementation of Good & Toulmin's rational function
+#' using Daley and Smith's implementation of Good-Toulmin rational function
 #' approximation to solve the missing species problem.
 #'
 #' @param xx      The fragments or sample of fragments
-#' @param withCI  Have preseq compute 95% confidence intervals for plotting?
+#' @param withCI  Have preseq compute 95 percent confidence intervals for plots?
 #' @param ...     Other arguments to pass on to preseq 
 #' 
 #' @return        A data frame with results

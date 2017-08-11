@@ -1,10 +1,12 @@
-#' plotMT -- plot mitochondrial variant calls in the context of heteroplasmy
+#' plot mitochondrial variant calls in the context of heteroplasmy
 #'
-#' use a plot (originally by Stephen Turner) to show mitochondrial heteroplasmy
+#' use a plot (inspired by the original, which was written by Stephen Turner)
+#' to visualize mitochondrial heteroplasmy from mitochondrial variant calls
+#'
 #' by default, calls with a VAF of 0 or 1 are excluded, but this can be changed
 #'
 #' @param mtCalls     a VRanges object with variant calls and associated VAFs
-#' @param filterVAF   filter low-quality and VAF %in% c(0, 1) calls? (TRUE)
+#' @param filterVAF   filter low-quality and 0 or 1 VAF calls? (TRUE)
 #' @param rot         plot counterclockwise (-1, default) or clockwise (1)?
 #' @param title       a title for the plot (NULL)
 #' 

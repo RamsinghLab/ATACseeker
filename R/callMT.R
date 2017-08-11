@@ -31,11 +31,14 @@ callMT <- function(mtReads, p.lower=0.1, p.error=0.001, read.count=2L, ...) {
   whichRanges <- as(seqinfo(get(gmapGenome)), "GRanges")
   bam <- bamPaths(attr(mtReads, "mtView"))
 
+  # recently TallyVariants has become picky about this:
+  readLen <- as(attr(mtReads, "mtReadLength"), "integer")
+
   # FIXME: use a mask= argument to black out hypervariable region?
   tally.param <- TallyVariantsParam(get(gmapGenome),
                                     minimum_mapq=20,
                                     high_base_quality=20L,
-                                    read_length=attr(mtReads, "mtReadLength"),
+                                    read_length=readLen, 
                                     ignore_duplicates=TRUE, 
                                     which=whichRanges,
                                     indels=TRUE)
