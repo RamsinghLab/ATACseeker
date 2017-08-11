@@ -8,6 +8,7 @@ Maintainer: Tim Triche, Jr. <tim.triche@gmail.com>
 Description: See ?fragPlot, ?tssQcPlot, ?qcPlot, ?getComplexity, ?plotMT
 Depends:
     Homo.sapiens,
+    VariantAnnotation,
     rtracklayer,
     preseqR,
     csaw
