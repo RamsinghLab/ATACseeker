@@ -51,6 +51,7 @@ plotMT <- function(mtCalls, filterVAF=TRUE, rot=-1, title=NULL) {
                "red")
 
   # Create gene boundaries and lines
+  mtSeqLen <- seqlengths(mtGenes)[1]
   mtRegions <- subset(mtGenes, !mtGenes$name %in% c("tRNA", "rRNA"))
   visibleboundaries <- start(mtRegions) + ((end(mtRegions)-start(mtRegions))/2)
   bdries <- data.frame(bp=visibleboundaries, VAF=-0.25)
@@ -61,7 +62,6 @@ plotMT <- function(mtCalls, filterVAF=TRUE, rot=-1, title=NULL) {
   mtNonCoding$name <- "Non-Coding"
   mtAll <- sort(c(mtGenes, mtNonCoding))
 
-  mtSeqLen <- seqlengths(mtGenes)[1]
   l <- data.frame(bp=seq(0, mtSeqLen), VAF=0)
   l$gene <- c("Control-Region", 
               unlist(sapply(mtAll, function(x) rep(x$name, width(x)))))
