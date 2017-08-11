@@ -10,7 +10,9 @@ Depends:
     Homo.sapiens,
     VariantAnnotation,
     rtracklayer,
+    ggthemes,
     preseqR,
+    ggplot2,
     csaw
 Imports:
     Rsamtools,
