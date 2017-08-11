@@ -51,7 +51,7 @@ plotMT <- function(mtCalls, filterVAF=TRUE, rot=-1, title=NULL) {
                "red")
 
   # Create gene boundaries and lines
-  mtRegions <- subset(mtGenes, !name %in% c("tRNA", "rRNA"))
+  mtRegions <- subset(mtGenes, !mtGenes$name %in% c("tRNA", "rRNA"))
   visibleboundaries <- start(mtRegions) + ((end(mtRegions)-start(mtRegions))/2)
   bdries <- data.frame(bp=visibleboundaries, VAF=-0.25)
   bdries$gene <- mtRegions$name
