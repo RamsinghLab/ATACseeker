@@ -10,6 +10,8 @@
 #' 
 #' @seealso preseqR
 #' 
+#' @import ggplot2
+#' 
 #' @export
 plotComplexity <- function(x, ..., ests=NULL, withCI=FALSE) {
   if (!is.null(ests)) { 
