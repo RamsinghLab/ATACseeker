@@ -27,16 +27,6 @@ plotComplexity <- function(x, ..., ests=NULL, withCI=FALSE) {
   } else {
     stop("Don't know what to do with a", class(x))
   }
-  
-  #This isn't the right place for this
-  #Move this to utils.R or somewhere more relevant later
-  packages = c("ggplot2")
-  package.check <- lapply(packages, FUN = function(x) {
-    if (!require(x, character.only = TRUE)) {
-      install.packages(x, dependencies = TRUE)
-      library(x, character.only = TRUE)
-    }
-  })
 
   if (is.null(res)) {
     stop("Complexity estimate failed. You might try estimating from 5' cuts.")
