@@ -25,6 +25,8 @@
 #' 
 #' @return        A data frame with results
 #' 
+#' @import preseqR
+#' 
 #' @export 
 getEsts <- function(xx, withCI=FALSE, ...) {  
   if (is(x, "GRanges") | is(x, "GAlignmentPairs")) xx <- getComplexity(xx)
