@@ -1,3 +1,14 @@
+#' get fragment sizes for a GAlignmentPairs object (can be slow) 
+#' 
+#' @param   galp    the GAlignmentPairs object
+#' @param   plotAs  hist[ogram, default], density, or none 
+#' @param   ...     other arguments to pass along to density()
+#'
+#' @return          (invisibly) the width of fragments in galp
+#'
+#' @import GenomicAlignments
+#'
+#' @export 
 fragmentLengths <- function(galp, plotAs=c('hist','density','none'), ...){
 
   stopifnot(all(isProperPair(galp)))
@@ -26,4 +37,3 @@ fragmentLengths <- function(galp, plotAs=c('hist','density','none'), ...){
   invisible(fraglens)
 
 }
-

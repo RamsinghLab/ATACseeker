@@ -2,7 +2,7 @@
 % Please edit documentation in R/getFeatureCounts.R
 \name{getFeatureCounts}
 \alias{getFeatureCounts}
-\title{for getComplexity and preseqR}
+\title{utility fn for getComplexity and preseqR}
 \usage{
 getFeatureCounts(x)
 }
@@ -13,5 +13,5 @@ getFeatureCounts(x)
 an array of feature frequencies
 }
 \description{
-for getComplexity and preseqR
+utility fn for getComplexity and preseqR
 }
