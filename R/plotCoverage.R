@@ -1,15 +1,29 @@
-## from Patrick Abouyoun's 2010 seminar
-##
-## e.g. for visualizing a specific enhancer:
-##
-## SMOenh <- GRanges('chr6', IRanges(29744702, 29751934), '+')
-## seqinfo(SMOenh) <- seqinfo(Mus.musculus)[seqlevels(SMOenh)]
-##
-## plotCoverage(galp, SMOenh)
-## plotCoverage(galp, SMOenh, stranded=TRUE)
-## plotCoverage(get5primeCuts(galp), SMOenh, stranded=TRUE)
-## plotCoverage(get5primeCuts(galp, shrink=FALSE), SMOenh, stranded=TRUE)
-##
+#' utility fn from Patrick Abouyoun's 2010 seminar
+#'
+#' @param x         a galp
+#' @param gr        a single GRanges range (i.e. seqname, start, end)
+#' @param col       what color to plot it
+#' @param xlab      x axis label for the plot 
+#' @param ylab      y axis label for the plot 
+#' @param main      main title for the plot
+#' @param stranded  plot stranded? (FALSE) 
+#' @param smoothen  smooth the counts? (FALSE) 
+#' @param kf        kernel function for smoothing (normal)
+#' @param ...       arguments to pass along to coverage() 
+#' 
+#' @examples visualizing a specific enhancer:
+#'
+#' SMOenh <- GRanges('chr6', IRanges(29744702, 29751934), '+')
+#' seqinfo(SMOenh) <- seqinfo(Mus.musculus)[seqlevels(SMOenh)]
+#'
+#' plotCoverage(galp, SMOenh)
+#' plotCoverage(galp, SMOenh, stranded=TRUE)
+#' plotCoverage(get5primeCuts(galp), SMOenh, stranded=TRUE)
+#' plotCoverage(get5primeCuts(galp, shrink=FALSE), SMOenh, stranded=TRUE)
+#'
+#' @import GenomicRanges
+#'
+#' @export 
 plotCoverage <- function(x, gr, col="violet", xlab="base", ylab="reads", 
                          main="Coverage", stranded=F, smoothen=0, kf='normal',
                          ...) {
@@ -30,8 +44,8 @@ plotCoverage <- function(x, gr, col="violet", xlab="base", ylab="reads",
       }
     }
     if(stranded == TRUE) { 
-      pluscvg <- coverage(plusStrand(x), ...)[[chr]]
-      minuscvg <- coverage(minusStrand(x), ...)[[chr]]
+      pluscvg <- coverage(subset(x, strand == "+"), ...)[[chr]]
+      minuscvg <- coverage(subset(x, strand == "-"), ...)[[chr]]
       revWin <- window(minuscvg, start(gr), end(gr))
       if(smoothen > 0) {
         revDepth = -1 * runwtsum(revWin, smoothen, wt=wts, endrule="constant")
@@ -65,7 +79,3 @@ plotCoverage <- function(x, gr, col="violet", xlab="base", ylab="reads",
             col=col)
   }
 }
-
-## convenience function
-plotStranded <- function(x, gr, ...) plotCoverage(x, gr, ..., stranded=TRUE)
-
