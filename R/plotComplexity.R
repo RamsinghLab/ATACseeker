@@ -4,16 +4,14 @@
 #' @param   x       the thing whose complexity is to be plotted
 #' @param   ...     other parameters to pass on to getEsts()
 #' @param   ests    precomputed complexity estimates (speeds up multiple runs) 
-#' @param   withCI  plot confidence intervals for the estimates?  (FALSE) 
-#' @param   add     add to an existing plot? (FALSE) 
+#' @param   withCI  plot confidence intervals for the estimates?  (FALSE)
 #' 
 #' @return  invisibly, the complexity estimates corresponding to the plot
 #' 
 #' @seealso preseqR
 #' 
 #' @export
-plotComplexity <- function(x, ..., ests=NULL, withCI=FALSE, add=FALSE) {
-
+plotComplexity <- function(x, ..., ests=NULL, withCI=FALSE) {
   if (!is.null(ests)) { 
     if (withCI & !all(c("frags.lower","frags.upper") %in% names(ests))) {
       stop("CIs requested, but provided estimates do not contain them!")
@@ -27,53 +25,48 @@ plotComplexity <- function(x, ..., ests=NULL, withCI=FALSE, add=FALSE) {
   } else {
     stop("Don't know what to do with a", class(x))
   }
+  
+  #This isn't the right place for this
+  #Move this to utils.R or somewhere more relevant later
+  packages = c("ggplot2")
+  package.check <- lapply(packages, FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  })
 
   if (is.null(res)) {
     stop("Complexity estimate failed. You might try estimating from 5' cuts.")
   } else {
     message("Plotting complexity curve", 
-           ifelse(withCI, "with confidence intervals...", "..."))
+           ifelse(withCI, " with confidence intervals...", "..."))
     if (withCI) { 
-      # {{{
-      epsilon <- 100
-      if (add == TRUE) { 
-        with(res, 
-             points(x=reads, y=frags, pch=NA_integer_, ...))
-      } else {
-        with(res, 
-             plot(x=reads, y=frags, 
-                  main="Extrapolated library complexity (95% CI)", 
-                  pch=NA_integer_, 
-                  xlab="Read count", 
-                  ylab="Unique fragments"))
-      }
-      with(res, 
-           segments(reads - epsilon, frags.lower, 
-                    reads + epsilon, frags.upper)) ## conf. int.
-      points(x=res$reads, y=res$frags, pch=18) ## mean fit 
-      lines(x=res$reads, y=res$frags, lwd=3, lty=1, col="red") ## mean fit 
-      lines(x=res$reads, y=res$frags.lower, lwd=1, lty=3, col="grey50")
-      lines(x=res$reads, y=res$frags.upper, lwd=1, lty=3, col="grey50")
-      # }}}
-    } else { 
-      # {{{
-      if (add == TRUE) { 
-        with(res, 
-             points(x=reads, y=frags, pch=NA_integer_, ...))
-      } else {
-        with(res,
-             plot(x=reads, y=frags, 
-                  col="red", pch=18,
-                  main="Extrapolated library complexity",
-                  xlab="Read count", 
-                  ylab="Unique fragments"))
-      }
-      with(res,
-           lines(x=reads, y=frags, lwd=3, lty=3, col="grey50"))
-      # }}}
+      epsilon <- 1000000 #Think this is just an offset for plotting?
+      ggplot(res, aes(x = reads/epsilon, y = frags/epsilon)) +
+        geom_line() +
+        geom_point() +
+        geom_ribbon(aes(ymin = frags.lower/epsilon, ymax = frags.upper/epsilon, alpha = 0.2)) +
+        geom_vline(xintercept = res$reads[1]/epsilon, linetype = "dashed") + #Add a line for existing library complexity
+        xlab("Read depth (M)") +
+        ylab("Unique fragments (M)") +
+        theme(
+          legend.title = element_blank(),
+          legend.position = "None"
+        )
+    } 
+    else {
+      epsilon <- 1000000 #Think this is just an offset for plotting?
+      ggplot(res, aes(x = reads/epsilon, y = frags/epsilon)) +
+        geom_line() +
+        geom_point() +
+        geom_vline(xintercept = res$reads[1]/epsilon, linetype = "dashed") + #Add a line for existing library complexity
+        xlab("Read depth (M)") +
+        ylab("Unique fragments (M)") +
+        theme(
+          legend.title = element_blank()
+        )
     }
   }
-  invisible(res)
-
 }
 
