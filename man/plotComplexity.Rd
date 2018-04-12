@@ -5,7 +5,7 @@
 \title{plot results from preseq (complexity estimation around features)
 TODO: use the ... to allow for comparison of multiple libraries}
 \usage{
-plotComplexity(x, ..., ests = NULL, withCI = FALSE, add = FALSE)
+plotComplexity(x, ..., ests = NULL, withCI = FALSE)
 }
 \arguments{
 \item{x}{the thing whose complexity is to be plotted}
@@ -15,8 +15,6 @@ plotComplexity(x, ..., ests = NULL, withCI = FALSE, add = FALSE)
 \item{ests}{precomputed complexity estimates (speeds up multiple runs)}
 
 \item{withCI}{plot confidence intervals for the estimates?  (FALSE)}
-
-\item{add}{add to an existing plot? (FALSE)}
 }
 \value{
 invisibly, the complexity estimates corresponding to the plot

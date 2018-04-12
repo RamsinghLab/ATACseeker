@@ -11,7 +11,7 @@ getEsts(xx, withCI = FALSE, ...)
 
 \item{withCI}{Have preseq compute 95 percent confidence intervals for plots?}
 
-\item{...}{Other arguments to pass on to preseq}
+\item{...}{Other arguments to pass on to preseqR}
 }
 \value{
 A data frame with results
@@ -20,4 +20,20 @@ A data frame with results
 Estimate the complexity of a library or sample based on unique fragments
 using Daley and Smith's implementation of Good-Toulmin rational function
 approximation to solve the missing species problem.
+}
+\details{
+Original functions in preseqR v2.0.1.1 for this were:
+preseqR.rfa.curve and preseqR.rfa.species.accum.curve
+
+The new functions as of the version 3.1.2 are:
+
+ds.mincount == preseqR.rfa.curve
+ds.mincount.bootstrap == preseqR.rfa.species.accum.curve
+
+The new functions return generators that can have data passed to them
+instead of returning a data frame as in version 2.0.1.1.
+
+It is worth noting that these functions return *non-bootstrapped* 
+fragment estimates but uses the bootstrapped variance estimates to 
+calculate CI. This is a function of the latest implementation of preseqR.
 }
