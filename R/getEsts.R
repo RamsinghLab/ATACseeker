@@ -29,7 +29,7 @@
 #' 
 #' @export 
 getEsts <- function(xx, withCI=FALSE, ...) {  
-  if (is(x, "GRanges") | is(x, "GAlignmentPairs")) xx <- getComplexity(xx)
+  if (is(xx, "GRanges") | is(xx, "GAlignmentPairs")) xx <- getComplexity(xx)
   message("Estimating complexity (this can take a little while)...")
   if (!withCI) {
     res.fun <- ds.mincount(xx, mt = 100, ...)
