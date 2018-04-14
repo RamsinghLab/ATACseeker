@@ -1,9 +1,10 @@
-#'
-#' for getComplexity and preseqR 
+#' utility fn for getComplexity and preseqR 
 #'
 #' @param x   the thing to count features in (usually a GRanges)
 #'
 #' @return    an array of feature frequencies
+#' 
+#' @import    GenomicRanges
 #' 
 #' @export
 getFeatureCounts <- function(x) {
@@ -14,4 +15,3 @@ getFeatureCounts <- function(x) {
   freqs[ rev(order(freqs$seen)), , drop=FALSE] ## descending order 
 
 }
-

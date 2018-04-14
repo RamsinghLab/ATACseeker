@@ -1,25 +1,18 @@
-##
-## e.g.
-##
-## galp <- data(humanGalp) 
-## library(Homo.sapiens)
-## anno <- promoters(TxDb.Hsapiens.UCSC.hg19.knownGene)
-## tssQcPlot(galp, anno)
-##
-## ...or...
-##
-## galp <- data(mouseGalp) 
-## library(Mus.musculus)
-## data(txsByFpkmInMouseLskCells)
-## anno <- flank(txsByFpkmInMouseLskCells, 200)
-## anno <- anno[ which(anno$FPKMinLSK > 0) ] 
-## tssQcPlot(galp, anno, mcols(anno))
-## 
-## FIXME: generalize this to handle CTCF/TSS plots, etc. according to genome(x)
-## 
-## data(CTCFsites.hg19)
-## data(CTCFsites.mm10)
-## 
+#' what you would expect.  not terribly novel; maybe use esATAC's instead?
+#' FIXME: generalize this to handle CTCF/TSS plots, etc. according to genome(x)
+#'
+#' @param   x         a GAlignmentPairs or GRanges to be scored w/featureScores
+#' @param   anno      annotations, e.g. Homo.sapiens or Mus.musculus
+#' @param   ordering  arg to pass to binPlots() 
+#' @param   span      smoother span
+#' @param   smoothing smoothing width
+#' @param   ...       args to pass along to binPlots
+#' 
+#' @return  whatever binPlots returns
+#' 
+#' @import  Repitools
+#'
+#' @export
 tssQcPlot <- function(x, anno, ordering, span=5000, smoothing=50, ...) {
 
   strip <- function(x) { 
